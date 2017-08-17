@@ -20,3 +20,13 @@ Benchmark_Chan  	20000000	        81.4 ns/op	       0 B/op	       0 allocs/op
 PASS
 ok  	command-line-arguments	3.903s
 ```
+3. "xx = xx + 1" 会比 "xx += 1" 性能高一点点
+```
+[root@iZm5egf7xb48axmu4z1t3fZ GoTestExample]# go test -v -test.benchmem -bench="."  plus_test.go
+Benchmark_plusEqual     2000000000           0.49 ns/op        0 B/op          0 allocs/op
+Benchmark_plusOne       2000000000           0.41 ns/op        0 B/op          0 allocs/op
+PASS
+ok      command-line-arguments  1.890s
+```
+
+
