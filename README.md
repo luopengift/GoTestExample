@@ -1,7 +1,13 @@
 # GoTestExample
 some test example for golang
 
+### [VERSION] go version go1.9 linux/amd64
+```
+[root@iZm5egf7xb48axmu4z1t3fZ GoTestExample]# go version
+go version go1.9 linux/amd64
+```
 ## NOTE:测试用例仅供参考!!!
+
 
 1. 创建1KB的Buffer和创建[]byte，性能几乎一样
 ```
@@ -20,13 +26,15 @@ Benchmark_Chan  	20000000	        81.4 ns/op	       0 B/op	       0 allocs/op
 PASS
 ok  	command-line-arguments	3.903s
 ```
-3. "xx = xx + 1" 会比 "xx += 1" 性能高一点点
+3. "xx += 1" 和 "x = x + 1" 和 "x ++" 性能差不多
 ```
 [root@iZm5egf7xb48axmu4z1t3fZ GoTestExample]# go test -v -test.benchmem -bench="."  plus_test.go
-Benchmark_plusEqual     2000000000           0.49 ns/op        0 B/op          0 allocs/op
-Benchmark_plusOne       2000000000           0.41 ns/op        0 B/op          0 allocs/op
+goos: linux
+goarch: amd64
+Benchmark_plusEqual     2000000000           0.41 ns/op        0 B/op          0 allocs/op
+Benchmark_plusOne       2000000000           0.42 ns/op        0 B/op          0 allocs/op
+Benchmark_plusPlus      2000000000           0.42 ns/op        0 B/op          0 allocs/op
 PASS
-ok      command-line-arguments  1.890s
+ok      command-line-arguments  2.643s
 ```
-
 
